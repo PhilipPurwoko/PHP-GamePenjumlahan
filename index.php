@@ -1,3 +1,11 @@
+<?php
+require_once('create.php');
+if (isset($_POST['submit'])) {
+	setcookie("name", $_POST['name'], time() + 3 * 30 * 24 * 3600, "/");
+	setcookie("email", $_POST['email'], time() + 3 * 30 * 24 * 3600, "/");
+	header("Location:index.php");
+}
+?>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -6,13 +14,6 @@
 	<h2 class="navbar-brand">Game Penjumlahan</h2>
 </nav>
 <?php
-require_once('create.php');
-if (isset($_POST['submit'])) {
-	setcookie("name", $_POST['name'], time() + 3 * 30 * 24 * 3600, "/");
-	setcookie("email", $_POST['email'], time() + 3 * 30 * 24 * 3600, "/");
-	header("Location:index.php");
-}
-
 if (isset($_COOKIE['name'])) {
 	echo '<div class="container"><div class="row"><div class="col">';
 	echo "<p>Halo " . $_COOKIE["name"] . ", selamat datang kembali di permainan ini !!</p>
@@ -23,7 +24,6 @@ if (isset($_COOKIE['name'])) {
 	echo '</div></div></div>';
 } else {
 ?>
-
 	<div class="container">
 		<div class="row">
 			<div class="col">
